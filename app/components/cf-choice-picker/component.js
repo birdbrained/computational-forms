@@ -1,1 +1,2 @@
-export { default } from 'computational-forms/components/cf-choice-picker/component';
+export { default } from '@centerforopenscience/computational-forms/components/cf-choice-picker/component';
+

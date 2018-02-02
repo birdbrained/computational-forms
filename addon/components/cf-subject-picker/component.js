@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import CFWidget from '@centerforopenscience/computational-forms/components/cf-widget/component';
+import layout from '@centerforopenscience/computational-forms/components/cf-subject-picker/template';
 
 // Helper function to determine if discipline has changed (comparing list of lists)
 function disciplineArraysEqual(a, b) {
@@ -47,7 +49,10 @@ function arrayStartsWith(arr, prefix) {
  * ```
  * @class subject-picker
  */
-export default Ember.Component.extend({
+export default CFWidget.extend({
+
+    layout,
+
     store: Ember.inject.service(),
     theme: Ember.inject.service(),
 

@@ -1,4 +1,8 @@
-
-<button class='btn btn-primary {{widgetClassString}}' {{action "pressButton"}} 
-disabled={{if disabled "disabled" null}}
->{{description}}</button> 
+{{description}}
+<button
+    class='btn btn-primary {{widgetClassString}}'
+    {{action "pressButton"}} 
+    disabled={{if disabled "disabled" null}}
+>
+    {{label}}
+</button> 

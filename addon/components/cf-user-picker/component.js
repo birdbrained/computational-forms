@@ -2,6 +2,8 @@ import Ember from 'ember';
 import { permissionSelector } from 'ember-osf/const/permissions';
 import NodeActionsMixin from 'ember-osf/mixins/node-actions';
 import ENV from '../../config/environment';
+import CFWidget from '@centerforopenscience/computational-forms/components/cf-widget/component';
+import layout from '@centerforopenscience/computational-forms/components/cf-user-picker/template';
 
 /**
  * @module ember-preprints
@@ -15,7 +17,8 @@ import ENV from '../../config/environment';
  * example, you cannot remove the sole bibliographic author).
  * @class preprint-form-authors
  */
-export default Ember.Component.extend(NodeActionsMixin, {
+export default CFWidget.extend(NodeActionsMixin, {
+    layout,
     i18n: Ember.inject.service(),
 
     // Variables that used to pass in from Controller
