@@ -85,40 +85,25 @@ The payload that the route should load in order to display a form should look so
 
     });
 
-### `controller.js`
-	
-    export default Ember.Controller.extend({
-        formComponents: [{
-        	componentName: "text-field",
-          	parameters: {
-            	textFieldValue: "title"
-            }  
-        }, {
-        	componentName: "text-field",
-       		parameters: {
-            	textFieldValue: "author"
-            }
-        }, {
-        	componentName: "submit"
-            parameters: {
-            	url: { value: "http://example.com/submit/" },
-                format: { value: "formdata" },
-                data: { value: {
-                	title: "title",
-                    author: "author"
-                }}
-            }
-        }]
-    })
+### Controller
 
-### `template.hbs`
-    
-	{{#each formComponents as |formComponent|}}
-		{{component
-        	formComponent.componentName
-            parameters=formComponent.parameters
+The controller neede for the forms is fairly simple. The functionality it provides is to map the values from the model returned in the route to the variables the template expects
+
+    export { default } from '@centerforopenscience/computational-forms/controllers/cf-controller';
+
+
+### Template
+
+The last piece needed to make the form functional is the template.
+
+    {{#each widgets as |widget|}}
+        {{component
+            widget.kind
+            widget=widget
+            parameters=parameters
         }}
-	{{/each}}
+    {{/each}}
+
 
 ## Components
 
