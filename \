@@ -1,0 +1,71 @@
+import Ember from 'ember';
+
+export default Ember.Route.extend({
+
+    model() {
+
+        return {
+            parameters: {
+                value1: "",
+                value2: "",
+                description1: "The description.",
+                "submit-url": "http://google.com/",
+                tf1: "Title",
+                "submit-label": "Submit"
+            },
+            widgets: [{
+                kind: "cf-text-field",
+                label: "",
+                description: "",
+                mappings: {
+                    value: "value1",
+                    description: "description1"
+                }
+            }, {
+                kind: "cf-text-field",
+                description: "value1",
+                mappings: {
+                    value: "value1"
+                }
+            }, {
+                kind: "cf-text-field",
+                description: "value1",
+                mappings: {
+                    value: "value1"
+                }
+            }, {
+                kind: "cf-submit",
+                label: "submit-label",
+                url: "submit-url",
+            }]
+        };
+
+    },
+
+    setupController(controller, model) {
+        
+        const that = this;
+        this.set("parameters", model.parameters)
+
+        // Grab any mapped parameters and put them on the widget object as a computed.
+        controller.set('widgets', model.widgets.map(widget => {
+            if (!widget.mappings) return widget;
+            return Object.entries(widget.mappings)
+                .reduce((obj, [k, v]) => ({
+                    ...obj,
+                    [k]: Ember.computed(`parameters.${v}`, {
+                        get: function() {
+                            debugger;
+                            return that.get(`parameters.${v}`)
+                        },
+                        set: function(key, value) {
+                            debugger;
+                            that.get(`parameters`)[v] = value;
+                        }
+                    })
+                }), Ember.Object.create(widget))
+        }));
+
+    }
+
+});

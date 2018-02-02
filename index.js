@@ -7,4 +7,9 @@ module.exports = {
     this.addonTree = tree;
     return this._super.treeForAddon.apply(this, arguments);
   },
+  options: {
+    babel: {
+      plugins: ['transform-object-rest-spread']
+    }
+  }
 };

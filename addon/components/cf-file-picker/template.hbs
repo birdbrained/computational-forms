@@ -1,0 +1,18 @@
+<div class='file-picker'>
+    {{description}}
+    <div class='directions'>
+        {{#if fileChosen}}
+            {{fileName}} selected for upload.
+        {{else}}
+    {{/if}}
+    </div>
+    <input
+        class='upload'
+        type="file"
+        onchange={{action "uploadFile" value=target}}
+        multiple
+    >
+</div>
+
+{{yield}}
+

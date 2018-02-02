@@ -1,0 +1,5 @@
+<label>{{label}}</label>
+<p>{{description}}</p>
+{{#each widgets as |widget|}}
+    {{component widget.kind widget=widget parameters=parameters}}
+{{/each}}

@@ -1,0 +1,15 @@
+{{#if (not editing)}}
+    {{get parameters mappings.label}}: {{get parameters mappings.value}}
+{{/if}}
+
+{{#if editing}}
+    <div>
+        <label>{{label}}</label>
+        {{#if description}}
+            <p>{{description}}</p>
+        {{/if}}
+        {{input value=value class='form-control'}}
+    </div>
+{{/if}}
+
+{{yield}}

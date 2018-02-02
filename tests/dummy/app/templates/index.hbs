@@ -1,0 +1,6 @@
+{{#each widgets as |widget|}}
+    {{component widget.kind widget=widget parameters=parameters}}
+{{/each}}
+{{!--
+{{partial (await caseDescriptionTemplate)}}
+--}}

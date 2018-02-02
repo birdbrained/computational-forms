@@ -1,11 +1,12 @@
 import Ember from 'ember';
-// import ENV from 'analytics-dashboard/config/environment';
+import CFWidget from '@centerforopenscience/computational-forms/components/cf-widget/component';
+import layout from '@centerforopenscience/computational-forms/components/cf-file-picker/template';
 
-export default Ember.Component.extend({
+export default CFWidget.extend({
+
+    layout,
 
     fileChosen: false,
-
-    parameters: {},
 
     actions: {
 
@@ -16,10 +17,10 @@ export default Ember.Component.extend({
             const filename = filenameParts[filenameParts.length - 1];
 
             reader.onloadend = (ev) => {
-                this.set('parameters.fileName.value', filename);
+                this.set('fileName', filename);
                 this.set('fileChosen', true);
                 const result = ev.target.result;
-                this.set('parameters.fileData.value', result);
+                this.set('fileData', result);
             };
             reader.readAsDataURL(fileHandle);
         }
