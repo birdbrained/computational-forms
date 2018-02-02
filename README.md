@@ -124,8 +124,29 @@ The `parameters` argument is how values from other parts of the form are passed 
 Each component will look for particular keys in `parameters` that  it is capable of using. For a `text-field` component
 
 
+#### Button `cf-button`
 
-### Available Components
+A `button` is a simple form control that triggers a `click` action when pressed.
+
+##### Parameters
+
+`label` : A string to use as a label for the button
+
+`description` : A string providing a description or instructions for the user.
+
+`action` : A action object to trigger when the button is pressed
+
+##### Example
+
+    {
+        "kind": "text-field",
+        "label": "First Name",
+        "action": "ajaxPost"
+        "mappings": {
+            "value": "firstName"
+        }
+    }
+
 
 #### Text Field `text-field`
 
@@ -136,6 +157,8 @@ A `text-field` is a basic single line form control that allows a user to input a
 `label` : A string to use as a label for the input field
 
 `textFieldValue` : The string value of the input field
+
+`description` : A string providing a description or instructions for the user.
 
 ##### Example
 
@@ -148,6 +171,16 @@ A `text-field` is a basic single line form control that allows a user to input a
     }
     
 #### Text Area `text-area`
+
+A long-form text input area.
+
+##### Parameters
+
+`label` : A string to use as a label for the text area
+
+`value` : The string value of the text area
+
+`description` : A string providing a description or instructions for the user.
 
 ##### Example
 
