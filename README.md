@@ -16,15 +16,7 @@ Use `yarn` or `npm`.
 
     yarn add ember-computational-forms
 
-## What is it doing?
-
-The payload that the route should load in order to display a form should look something along these lines. The `widgets` key describes how the form should be laid out. Each object in the widgets array describes a particular form control, or group of form controls.
-
-The only key that is required in each widget object is `kind`. This should be a string that matches the name of a component. Each of the key, value pairs in the widget object are assigned directly to the component on initialization.
-
-Widget objects may also contain a mappings key. This object describes additional values that will be assigned to the component. Mappings keys are the name of the key to use on the component, and their value is the key that should be used to lookup a value in the top level `parameters` object.
-
-While the key in each object are assigned to the component directly during initialization, the keys in mappings are created using a computed property. This way they can be dynamically bound to other components allowing for a form that can use information from other parts of it it dictate how it should behave.
+## Example
 
 `route.js`
     
@@ -115,6 +107,15 @@ The last piece needed to make the form functional is the template.
             parameters=parameters
         }}
     {{/each}}
+
+
+The payload that the route should load in order to display a form should look something along these lines. The `widgets` key describes how the form should be laid out. Each object in the widgets array describes a particular form control, or group of form controls.
+
+The only key that is required in each widget object is `kind`. This should be a string that matches the name of a component. Each of the key, value pairs in the widget object are assigned directly to the component on initialization.
+
+Widget objects may also contain a mappings key. This object describes additional values that will be assigned to the component. Mappings keys are the name of the key to use on the component, and their value is the key that should be used to lookup a value in the top level `parameters` object.
+
+While the key in each object are assigned to the component directly during initialization, the keys in mappings are created using a computed property. This way they can be dynamically bound to other components allowing for a form that can use information from other parts of it it dictate how it should behave.
 
 
 ## Components
