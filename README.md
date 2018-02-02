@@ -10,7 +10,13 @@ It allows users to build forms by creating a JSON object that describes how the 
 
 Many forms require logic in addition to the data fields that exist in it. A simple example might be a requirement for a name field where the user types in their full name out, but an API requires a separate field for first and last.
 
-## Example
+## Installation
+
+Use `yarn` or `npm`.
+
+    yarn add ember-computational-forms
+
+## What is it doing?
 
 The payload that the route should load in order to display a form should look something along these lines. The `widgets` key describes how the form should be laid out. Each object in the widgets array describes a particular form control, or group of form controls. The only key that is required in each widget object is `kind`. This should be a string that matches the name of a component. Each of the key, value pairs in the widget object are assigned directly to the component on initialization. Widget objects may also contain a mappings key. This object describes additional values that will be assigned to the component. Mappings keys are the name of the key to use on the component, and their value is the key that should be used to lookup a value in the top level `parameters` object. While the key in each object are assigned to the component directly during initialization, the keys in mappings are created using a computed property. This way they can be dynamically bound to other components allowing for a form that can use information from other parts of it it dictate how it should behave.
 
@@ -133,39 +139,50 @@ A `text-field` is a basic single line form control that allows a user to input a
 
 ##### Example
 
-###### `route.js`
-    
-    import Ember from "ember";
-    
-    export default Ember.route.extend({
-    	model() {
-        	
+    {
+        "kind": "text-field",
+        "label": "First Name",
+        "mappings": {
+            "value": "firstName"
         }
-    })
-
-###### `controller.js`
-
-	import Ember from "ember";
-	
-    export default Ember.Controller.extend({
-        formComponents: [{
-        	componentName: "text-field",
-          	parameters: {
-            	textFieldValue: "title"
-            }  
-        }]
-    })
-
-###### `template.hbs`
-    
-	{{#each formComponents as |formComponent|}}
-		{{component
-        	formComponent.componentName
-            parameters=formComponent.parameters
-        }}
-	{{/each}}
+    }
     
 #### Text Area `text-area`
 
+##### Example
+
+    {
+        "kind": "text-area",
+        "label": "Comments",
+        "mappings": {
+            "value": "userComments"
+        }
+    }
+
 #### Radio Buttons `radio-buttons`
+
+
+
+##### Example
+
+    {
+        "kind": "radio-buttons",
+        "label": "Choose a size",
+        "options": [{
+            "label": "Small",
+            "description": "Its small enough to fit a fairy.",
+            "value": "S"
+        }, {
+            "label": "Medium",
+            "description": "Its pretty average",
+            "value": "M"
+        }, {
+            "label": "Large",
+            "description": "They might be giant.",
+            "value": "L"
+        }],
+        "mappings": {
+            "value": "size"
+        }
+    }
 
