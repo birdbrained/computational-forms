@@ -91,7 +91,7 @@ Use `yarn` or `npm`.
 
 ### Controller
 
-The controller neede for the forms is fairly simple. The functionality it provides is to map the values from the model returned in the route to the variables the template expects
+The controller needed for the forms is fairly simple. The functionality it provides is to map the values from the model returned in the route to the variables the template expects
 
     export { default } from '@centerforopenscience/computational-forms/controllers/cf-controller';
 
