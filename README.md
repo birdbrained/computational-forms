@@ -124,11 +124,11 @@ The `parameters` argument is how values from other parts of the form are passed 
 Each component will look for particular keys in `parameters` that  it is capable of using. For a `text-field` component
 
 
-#### Button `cf-button`
+### Button `cf-button`
 
 A `button` is a simple form control that triggers a `click` action when pressed.
 
-##### Parameters
+#### Parameters
 
 `label` : A string to use as a label for the button
 
@@ -136,7 +136,7 @@ A `button` is a simple form control that triggers a `click` action when pressed.
 
 `action` : A action object to trigger when the button is pressed
 
-##### Example
+#### Example
 
     {
         "kind": "text-field",
@@ -148,11 +148,11 @@ A `button` is a simple form control that triggers a `click` action when pressed.
     }
 
 
-#### Text Field `text-field`
+### Text Field `text-field`
 
 A `text-field` is a basic single line form control that allows a user to input a string.
 
-##### Parameters
+#### Parameters
 
 `label` : A string to use as a label for the input field
 
@@ -160,7 +160,7 @@ A `text-field` is a basic single line form control that allows a user to input a
 
 `description` : A string providing a description or instructions for the user.
 
-##### Example
+#### Example
 
     {
         "kind": "text-field",
@@ -170,11 +170,11 @@ A `text-field` is a basic single line form control that allows a user to input a
         }
     }
     
-#### Text Area `text-area`
+### Text Area `text-area`
 
 A long-form text input area.
 
-##### Parameters
+#### Parameters
 
 `label` : A string to use as a label for the text area
 
@@ -182,7 +182,7 @@ A long-form text input area.
 
 `description` : A string providing a description or instructions for the user.
 
-##### Example
+#### Example
 
     {
         "kind": "text-area",
@@ -192,11 +192,19 @@ A long-form text input area.
         }
     }
 
-#### Radio Buttons `radio-buttons`
+### Radio Buttons `radio-buttons`
 
+Creates a radio buttons widget with one or more choices that are mutually exclusive of each other.
 
+#### Parameters
 
-##### Example
+`label`: A string to use as a label for the radio buttons.
+
+`description` : A string providing a description or instructions for the user.
+
+`options` : A list of option objects to display to the user. Option objects themselves have three keys that are required; A label and a description that will be displayed to the user, and an internal shorthand for the choice that will be used by the application.
+
+#### Example
 
     {
         "kind": "radio-buttons",
