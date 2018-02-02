@@ -20,31 +20,78 @@ Many forms require logic in addition to the data fields that exist in it. A simp
 
 For the adventurous; a quick example of CF without using the CF JSON form schema. This creates a form that asks for a book's title and author, and `POST`'s the data to a url as form data.
 
-### `route.js`
 
 In this example, we manually create parameters to use in the form.
+`route.js`
     
-    import Ember from "ember";
-    
-    export default Ember.route.extend({
-    	model() {
-        	this.store.createRecord("parameter", {
-            	name: "title",
-                value: undefined
-            }).save();
-            this.store.createRecord("parameter", {
-            	name: "author",
-                value: undefined
-            }).save();
-            this.store.createRecord("parameter", {
-            	name: "submit-url",
-                value: "http://example.com/submit"
-            }).save();
-            this.store.createRecord("parameter", {
-            	name: "",
-            }).save();
-        }
-    })
+    import Ember from 'ember';
+
+    export default Ember.Route.extend({
+
+        model: () => ({
+            parameters: {
+                value1: "",
+                value2: "",
+                description1: "The description.",
+                "submit-url": "http://google.com/",
+                tf1: "Title",
+                "file-name": "",
+                "file-data": null,
+            },
+            widgets: [{
+                kind: "cf-container",
+                label: "Basic Info",
+                description: "Your personal information will never be shared. In fact, it's not even uploaded when you submit the form! It is required in order to press the submit button though :)",
+                widgets: [{
+                    kind: "cf-text-field",
+                    label: "First Name",
+                    mappings: {
+                        value: "value1",
+                    }
+                }, {
+                    kind: "cf-text-field",
+                    label: "Last Name",
+                    mappings: {
+                        value: "value2"
+                    }
+                }]
+            }, {
+                kind: "cf-text-field",
+                label: "Enter Your Last Name",
+                mappings: {
+                    value: "value2"
+                }
+            }, {
+                kind: "cf-text-field",
+                label: "",
+                mappings: {
+                    value: "value1"
+                }
+            }, {
+                kind: "cf-file-picker",
+                mappings: {
+                    fileName: "file-name",
+                    fileData: "file-data"
+                }
+            }, {
+                kind: "cf-text-field",
+                label: "Enter a title for the file.",
+                mappings: {
+                    predictionValue: "file-name",
+                    value: "file-title"
+                }
+            }, {
+                kind: "cf-submit",
+                label: "Submit",
+                url: "submit-url",
+                mappings: {
+                    
+                },
+            }]
+        })
+
+
+    });
 
 ### `controller.js`
 	
